@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+
+// ✅ IMPORT CORREGIDO (ya no rompe el build en Vercel)
 import { useEvaluacion, RespuestasArea } from "@/EvaluacionContext";
+
 import { calcularRiesgoArea } from "@/lib/motorRiesgo";
 
 const AREAS: RespuestasArea["area"][] = [
@@ -63,6 +66,7 @@ export default function ChecklistPage() {
 
   const handleGuardarArea = () => {
     const riesgo = calcularRiesgoArea(areaActual, respuestas);
+
     const registro: RespuestasArea = {
       area: areaActual,
       respuestas,
@@ -85,6 +89,7 @@ export default function ChecklistPage() {
       <h1 className="text-2xl font-semibold mb-2">
         Checklist por áreas del hogar
       </h1>
+
       <p className="text-sm text-slate-600 mb-6">
         Responde según la situación actual del hogar. Con esto identificaremos
         riesgos en baño, dormitorio, cocina, pasillos y escaleras.
@@ -96,6 +101,7 @@ export default function ChecklistPage() {
           <span>Progreso general</span>
           <span>{progreso}%</span>
         </div>
+
         <div className="h-2 w-full rounded-full bg-slate-200 overflow-hidden">
           <div
             className="h-full bg-sky-600 transition-all"
@@ -116,6 +122,7 @@ export default function ChecklistPage() {
             className="flex flex-col justify-between gap-2 rounded-xl bg-white p-3 shadow-sm md:flex-row md:items-center"
           >
             <p className="text-sm text-slate-800">{p.texto}</p>
+
             <div className="flex gap-2 text-xs">
               {["si", "no", "n/a"].map((op) => (
                 <button
@@ -150,5 +157,3 @@ export default function ChecklistPage() {
     </div>
   );
 }
-
-
