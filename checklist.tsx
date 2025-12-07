@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useEvaluacion, RespuestasArea } from "../EvaluacionContext";
+import { useEvaluacion, RespuestasArea } from "@/EvaluacionContext";
 import { calcularRiesgoArea } from "@/lib/motorRiesgo";
 
 const AREAS: RespuestasArea["area"][] = [
@@ -150,3 +150,5 @@ export default function ChecklistPage() {
     </div>
   );
 }
+
+
